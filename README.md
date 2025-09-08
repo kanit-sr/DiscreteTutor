@@ -13,7 +13,7 @@ The backend securely manages the API key on the server, ensuring safe communicat
 
 ---
 
-## 📂 Project Structure
+## 📂 Project Structure (Temporary)
 
 ```
 quiz-app/
