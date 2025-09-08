@@ -1,5 +1,3 @@
----
-
 # Quiz Website – Intro CEDT Project
 
 ## 📌 Project Description
