@@ -1,6 +1,3 @@
-Perfect 👍 a **README.md** will make your project look professional and clear.
-Here’s a sample you can use (Markdown format):
-
 ---
 
 # Quiz Website – Intro CEDT Project
