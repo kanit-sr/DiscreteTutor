@@ -1,0 +1,932 @@
+[
+  {
+    "id": 1,
+    "topic": "logic",
+    "prompt": "Which is equivalent to ¬(P ∧ Q)?",
+    "c1": "¬P ∧ ¬Q",
+    "c2": "P → Q",
+    "c3": "¬P ∨ ¬Q",
+    "c4": "P ∨ Q",
+    "correct": 3
+  },
+  {
+    "id": 2,
+    "topic": "logic",
+    "prompt": "Which sentence is proposition?",
+    "c1": "Please answer this question.",
+    "c2": "1 + 1 = 3",
+    "c3": "x + y = 0",
+    "c4": "Do you know what it means?",
+    "correct": 2
+  },
+  {
+    "id": 3,
+    "topic": "logic",
+    "prompt": "Given p=T, q=F, r=T. What is the truth value of p ∧ (q ∨ ¬r)?",
+    "c1": "T",
+    "c2": "F",
+    "c3": "",
+    "c4": "",
+    "correct": 2
+  },
+  {
+    "id": 4,
+    "topic": "logic",
+    "prompt": "Given p=T, q=F, r=T. What is the truth value of ¬p → (q → ¬r)?",
+    "c1": "T",
+    "c2": "F",
+    "c3": "",
+    "c4": "",
+    "correct": 1
+  },
+  {
+    "id": 5,
+    "topic": "logic",
+    "prompt": "Given p=T, q=F, r=T. What is the truth value of (¬p → q) → ¬r?",
+    "c1": "T",
+    "c2": "F",
+    "c3": "",
+    "c4": "",
+    "correct": 2
+  },
+  {
+    "id": 6,
+    "topic": "logic",
+    "prompt": "Given p=T, q=F, r=T. What is the truth value of (¬q → ¬p) ∧ s?",
+    "c1": "T",
+    "c2": "F",
+    "c3": "",
+    "c4": "",
+    "correct": 2
+  },
+  {
+    "id": 7,
+    "topic": "logic",
+    "prompt": "Let p: You get bubble tea as a reward, q: You pass an exam, r: You do every exercise by yourself. Which proposition represents: \"You do every exercise by yourself and pass an exam but you do not get a bubble tea as a reward.\"?",
+    "c1": "r ∧ q ∧ ¬p",
+    "c2": "(r ∧ q) ∨ ¬p",
+    "c3": "(r ∧ q) → ¬p",
+    "c4": "(r → q) → ¬p",
+    "correct": 1
+  },
+  {
+    "id": 8,
+    "topic": "logic",
+    "prompt": "Let p: You get bubble tea as a reward, q: You pass an exam, r: You do every exercise by yourself. Which proposition represents: \"You will not get bubble tea as a reward if you do not pass an exam.\"?",
+    "c1": "¬p → ¬q",
+    "c2": "¬q → ¬p",
+    "c3": "¬(p → q)",
+    "c4": "¬(q → p)",
+    "correct": 2
+  },
+  {
+    "id": 9,
+    "topic": "logic",
+    "prompt": "Let p: You get bubble tea as a reward, q: You pass an exam, r: You do every exercise by yourself. Which proposition represents: \"You will get a bubble tea as a reward if and only if you do every exercise by yourself or you pass an exam.\"?",
+    "c1": "p ↔ ( r ∨ q )",
+    "c2": "p ↔ ( r ∧ q )",
+    "c3": "p → ( r ∨ q )",
+    "c4": "( r ∨ q ) → p",
+    "correct": 1
+  },
+  {
+    "id": 10,
+    "topic": "logic",
+    "prompt": "Let p: You get bubble tea as a reward, q: You pass an exam, r: You do every exercise by yourself. Which proposition represents: \"A sufficient condition for getting bubble tea as a reward is to do every exercise by yourself and pass an exam.\"?",
+    "c1": "p → ( r ∧ q )",
+    "c2": "( r ∧ q ) → p",
+    "c3": "( p → r ) ∧ q",
+    "c4": "( r → p ) ∧ q",
+    "correct": 2
+  },
+  {
+    "id": 11,
+    "topic": "logic",
+    "prompt": "Let p: You will get the scores, q: you answer correctly, r: you submit the answers. Which option correctly represents the proposition “You will get the scores only if you answer correctly and submit the answers” AND its converse, respectively?",
+    "c1": "Proposition: p→(q∧r), Converse: (q∧r)→p",
+    "c2": "Proposition: (q∧r)→p, Converse: p→(q∧r)",
+    "c3": "Proposition: p→(q∧r), Converse: ¬p→¬(q∧r)",
+    "c4": "Proposition: p↔(q∧r), Converse: (q∧r)↔p",
+    "correct": 1
+  },
+  {
+    "id": 12,
+    "topic": "logic",
+    "prompt": "How many rows appear in a truth table for the compound proposition: p ∧ q ∧ ¬r?",
+    "c1": "2",
+    "c2": "4",
+    "c3": "8",
+    "c4": "16",
+    "correct": 3
+  },
+  {
+    "id": 20,
+    "topic": "logic",
+    "prompt": "Are these statements consistent:\na) Whenever the homework is not due, students can do their homework.\nb) If students do their homework, students can submit their homework.\nc) Students cannot submit their homework when the homework is due.",
+    "c1": "Yes",
+    "c2": "No",
+    "c3": "",
+    "c4": "",
+    "correct": 1
+  },
+  {
+    "id": 21,
+    "topic": "logic",
+    "prompt": "( p ∧ q ) → q ≡ ?",
+    "c1": "q → p",
+    "c2": "p ∨ ¬p",
+    "c3": "p→q",
+    "c4": "¬( p ∧ q )",
+    "correct": 2
+  },
+  {
+    "id": 22,
+    "topic": "logic",
+    "prompt": "q→( p ∧ q ) ≡ ?",
+    "c1": "q→p",
+    "c2": "p ∨ ¬p",
+    "c3": "p→q",
+    "c4": "¬( p ∧ q )",
+    "correct": 1
+  },
+  {
+    "id": 23,
+    "topic": "logic",
+    "prompt": "q→¬( p ∧ q ) ≡ ?",
+    "c1": "q→p",
+    "c2": "p ∨ ¬p",
+    "c3": "p→q",
+    "c4": "¬( p ∧ q )",
+    "correct": 4
+  },
+  {
+    "id": 24,
+    "topic": "logic",
+    "prompt": "Determine whether ( p ∧ q ) → q is a Tautology, Contradiction or Contingency.",
+    "c1": "Tautology",
+    "c2": "Contradiction",
+    "c3": "Contingency",
+    "c4": "",
+    "correct": 1
+  },
+  {
+    "id": 25,
+    "topic": "logic",
+    "prompt": "Determine whether (p ∧ ¬(p∨q)) is a Tautology, Contradiction or Contingency.",
+    "c1": "Tautology",
+    "c2": "Contradiction",
+    "c3": "Contingency",
+    "c4": "",
+    "correct": 2
+  },
+  {
+    "id": 26,
+    "topic": "logic",
+    "prompt": "Let P(x): “x > 0”, Q(x): “x < 0”, R(x): “x = 0”, S(x, y): “x + y = 2”. Domain is all real numbers. What is the truth value of ∀xP(x)?",
+    "c1": "T",
+    "c2": "F",
+    "c3": "",
+    "c4": "",
+    "correct": 2
+  },
+  {
+    "id": 27,
+    "topic": "logic",
+    "prompt": "Let P(x): “x > 0”, Q(x): “x < 0”, R(x): “x = 0”, S(x, y): “x + y = 2”. Domain is all real numbers. What is the truth value of ∃!xP(x)?",
+    "c1": "T",
+    "c2": "F",
+    "c3": "",
+    "c4": "",
+    "correct": 2
+  },
+  {
+    "id": 28,
+    "topic": "logic",
+    "prompt": "Let P(x): “x > 0”, Q(x): “x < 0”, R(x): “x = 0”, S(x, y): “x + y = 2”. Domain is all real numbers. What is the truth value of ∀x((P(x) ∧ Q(x)) → R(x))?",
+    "c1": "T",
+    "c2": "F",
+    "c3": "",
+    "c4": "",
+    "correct": 1
+  },
+  {
+    "id": 29,
+    "topic": "logic",
+    "prompt": "Let P(x): “x > 0”, Q(x): “x < 0”, R(x): “x = 0”, S(x, y): “x + y = 2”. Domain is all real numbers. What is the truth value of ∀x∃yS(x,y)?",
+    "c1": "T",
+    "c2": "F",
+    "c3": "",
+    "c4": "",
+    "correct": 1
+  },
+  {
+    "id": 30,
+    "topic": "logic",
+    "prompt": "Let P(x): “x > 0”, Q(x): “x < 0”, R(x): “x = 0”, S(x, y): “x + y = 2”. Domain is all real numbers. What is the truth value of ∃x∀yS(x,y)?",
+    "c1": "T",
+    "c2": "F",
+    "c3": "",
+    "c4": "",
+    "correct": 2
+  },
+  {
+    "id": 31,
+    "topic": "logic",
+    "prompt": "Let P(x, y): “x joins y class”, Q(x): “x likes studying math”. Domain of x is students, domain of y is classes. Express in terms of quantifier: “Every student who joins DISCRETE class like studying math”",
+    "c1": "∀x(P(x,DISCRETE) → Q(x))",
+    "c2": "∀x(P(x,DISCRETE) ∧ Q(x))",
+    "c3": "∃x(P(x,DISCRETE) → Q(x))",
+    "c4": "∃x(P(x,DISCRETE) ∧ Q(x))",
+    "correct": 1
+  },
+  {
+    "id": 32,
+    "topic": "logic",
+    "prompt": "Let P(x, y): “x joins y class”, Q(x): “x likes studying math”. Domain of x is students, domain of y is classes. Express in terms of quantifier: “There is a student who neither join DISCRETE class nor DIG LOGIC class”",
+    "c1": "∃x(¬( P(x,DISCRETE) ∧ P(x,DIG LOGIC)))",
+    "c2": "∃x(¬( P(x,DISCRETE) ∨ P(x,DIG LOGIC)))",
+    "c3": "∀x(¬( P(x,DISCRETE) ∧ P(x,DIG LOGIC)))",
+    "c4": "∀x(¬( P(x,DISCRETE) ∨ P(x,DIG LOGIC)))",
+    "correct": 2
+  },
+  {
+    "id": 33,
+    "topic": "logic",
+    "prompt": "Let P(x, y): “x joins y class”, Q(x): “x likes studying math”. Domain of x is students, domain of y is classes. Express in terms of quantifier: “There is a student who does not join any class.”",
+    "c1": "¬∃x∀yP(x,y)",
+    "c2": "∃x∀y(¬P(x,y))",
+    "c3": "∀x∃y(¬P(x,y))",
+    "c4": "¬∀x∃yP(x,y)",
+    "correct": 2
+  },
+  {
+    "id": 34,
+    "topic": "logic",
+    "prompt": "Determine the truth value of this statement: If ∀xP(x) is true when the domain of x is all real numbers (R), then ∀xP(x) is always true when the domain of x is all integers (I).",
+    "c1": "T",
+    "c2": "F",
+    "c3": "",
+    "c4": "",
+    "correct": 1
+  },
+  {
+    "id": 35,
+    "topic": "logic",
+    "prompt": "Determine the truth value of this statement: If ∃xP(x) is true when the domain of x is all real numbers (R), then ∃xP(x) is always true when the domain of x is all integers (I).",
+    "c1": "T",
+    "c2": "F",
+    "c3": "",
+    "c4": "",
+    "correct": 2
+  },
+  {
+    "id": 36,
+    "topic": "logic",
+    "prompt": "Let P(x), Q(x) be propositional functions and A be a proposition. Which of the following is logically equivalent to ∀xP(x) → A?",
+    "c1": "∀x(P(x) → A)",
+    "c2": "∃x(P(x) → A)",
+    "c3": "∀x(A → P(x))",
+    "c4": "∃x(A → P(x))",
+    "correct": 2
+  },
+  {
+    "id": 37,
+    "topic": "logic",
+    "prompt": "Is the statement ∀x(P(x) ∨ Q(x)) ≡ ∀xP(x) ∨ ∀xQ(x) true or false?",
+    "c1": "T",
+    "c2": "F",
+    "c3": "",
+    "c4": "",
+    "correct": 2
+  },
+  {
+    "id": 38,
+    "topic": "logic",
+    "prompt": "Given the premises: 1. ( p ∨ ¬q ) → ¬r, 2. p ∧ q, 3. s → r. Which of the following conclusions makes the argument valid?",
+    "c1": "¬s",
+    "c2": "q → r",
+    "c3": "s",
+    "c4": "r",
+    "correct": 1
+  },
+  {
+    "id": 39,
+    "topic": "logic",
+    "prompt": "Identify the error in this argument that supposedly shows that if ∃xP(x) ∧ ∃xQ(x) is true then ∃x(P(x) ∧ Q(x)) is true.\n1. ∃xP(x) ∧ ∃xQ(x) (Premise)\n2. ∃xP(x) (Simplification from 1)\n3. P(c) (Existential instantiation from 2)\n4. ∃xQ(x) (Simplification from 1)\n5. Q(d) (Existential instantiation from 4)\n6. P(c) ∧ Q(d) (Conjunction from 3 and 5)\n7. ∃x(P(x) ∧ Q(x)) (Existential generalization from 6)",
+    "c1": "Step 3",
+    "c2": "Step 5",
+    "c3": "Step 6",
+    "c4": "Step 7",
+    "correct": 4
+  },
+  {
+    "id": 41,
+    "topic": "logic",
+    "prompt": "Given the premises:\n1. Every DS-TA either enjoys drinking frappe or enjoys drinking tea.\n2. Every DS-TA either enjoys drinking coffee or does not enjoy drinking tea.\n3. Every DS-TA who enjoys drinking milk does not enjoy drinking coffee.\n4. Some DS-TA do not enjoy drinking frappe.\nIs the conclusion 'Every DS-TA do not enjoy drinking milk' valid?",
+    "c1": "Yes",
+    "c2": "No",
+    "c3": "",
+    "c4": "",
+    "correct": 2
+  },
+  {
+    "id": 42,
+    "topic": "logic",
+    "prompt": "Given the premises:\n1. Every DS-TA either enjoys drinking frappe or enjoys drinking tea.\n2. Every DS-TA either enjoys drinking coffee or does not enjoy drinking tea.\n3. Every DS-TA who enjoys drinking milk does not enjoy drinking coffee.\n4. Some DS-TA do not enjoy drinking frappe.\nIs the conclusion 'Some DS-TA who enjoy drinking tea, enjoy drinking coffee' valid?",
+    "c1": "Yes",
+    "c2": "No",
+    "c3": "",
+    "c4": "",
+    "correct": 1
+  },
+  {
+    "id": 43,
+    "topic": "Sets",
+    "prompt": "Determine whether the following statement is true or false: {a,b,c} = {a,c,b}",
+    "c1": "TRUE",
+    "c2": "FALSE",
+    "c3": "",
+    "c4": "",
+    "correct": 1
+  },
+  {
+    "id": 44,
+    "topic": "Sets",
+    "prompt": "Determine whether the following statement is true or false: ∅ ⊆ {{∅},1}",
+    "c1": "TRUE",
+    "c2": "FALSE",
+    "c3": "",
+    "c4": "",
+    "correct": 1
+  },
+  {
+    "id": 45,
+    "topic": "Sets",
+    "prompt": "Determine whether the following statement is true or false: {∅} ∈ {{∅},1}",
+    "c1": "TRUE",
+    "c2": "FALSE",
+    "c3": "",
+    "c4": "",
+    "correct": 1
+  },
+  {
+    "id": 46,
+    "topic": "Sets",
+    "prompt": "Determine whether the following statement is true or false: If A ∩ B = ∅ and |A| = 3, B must be an empty set.",
+    "c1": "TRUE",
+    "c2": "FALSE",
+    "c3": "",
+    "c4": "",
+    "correct": 2
+  },
+  {
+    "id": 47,
+    "topic": "Sets",
+    "prompt": "Let C = {{∅},∅,2,{2}}. Determine whether the following statement is true or false: |C ∩ P(C)| = 3",
+    "c1": "TRUE",
+    "c2": "FALSE",
+    "c3": "",
+    "c4": "",
+    "correct": 1
+  },
+  {
+    "id": 48,
+    "topic": "Sets",
+    "prompt": "Let C = {{∅},∅,1,{2}}. Determine whether the following statement is true or false: |C ∪ P({∅,1})| = 6",
+    "c1": "TRUE",
+    "c2": "FALSE",
+    "c3": "",
+    "c4": "",
+    "correct": 1
+  },
+  {
+    "id": 49,
+    "topic": "Sets",
+    "prompt": "Let C = {{∅},∅,1,{2}}. Determine whether the following statement is true or false: ∅ is a member of (C - P(C))",
+    "c1": "TRUE",
+    "c2": "FALSE",
+    "c3": "",
+    "c4": "",
+    "correct": 2
+  },
+  {
+    "id": 50,
+    "topic": "Sets",
+    "prompt": "Let U = {1,2,...,20}, A = {x | x² ∉ U}, B = {x | 4x ∉ U ∧ x/3 ∉ A}. Find |B - A|.",
+    "c1": "0",
+    "c2": "3",
+    "c3": "5",
+    "c4": "1",
+    "correct": 1
+  },
+  {
+    "id": 51,
+    "topic": "Sets",
+    "prompt": "Let U = {1,2,...,20}, A = {x | x² ∉ U}, B = {x | 4x ∉ U ∧ x/3 ∉ A}. Find |A ∩ B|.",
+    "c1": "14",
+    "c2": "13",
+    "c3": "12",
+    "c4": "11",
+    "correct": 2
+  },
+  {
+    "id": 52,
+    "topic": "Sets",
+    "prompt": "Let U = {1,2,...,20}, A = {x | x² ∉ U}, B = {x | 4x ∉ U ∧ x/3 ∉ A}, C = {x | x ∈ A ∧ x ∉ B}. Find |(A - C) ∪ B'|.",
+    "c1": "17",
+    "c2": "18",
+    "c3": "19",
+    "c4": "20",
+    "correct": 4
+  },
+  {
+    "id": 53,
+    "topic": "Sets",
+    "prompt": "Let U = {1,2,...,20}, A = {x | x² ∉ U}, B = {x | 4x ∉ U ∧ x/3 ∉ A}, C = {x | x ∈ A ∧ x ∉ B}. How many possible sets D exist such that D ∩ C is an empty set?",
+    "c1": "2^17",
+    "c2": "2^16",
+    "c3": "2^15",
+    "c4": "2^13",
+    "correct": 1
+  },
+  {
+    "id": 54,
+    "topic": "Relations and Functions",
+    "prompt": "Select f that is not a function from ℝ to ℝ.",
+    "c1": "$f(x) = 2\\sqrt{x+1}$",
+    "c2": "$f(x) = x + 3$",
+    "c3": "$f(x) = x^2+2x+1$",
+    "c4": "$f(x) = 1$",
+    "correct": 1
+  },
+  {
+    "id": 55,
+    "topic": "Relations and Functions",
+    "prompt": "Consider the function $f(x) = 2/x$ from a domain $D$ to ℝ. Find the domain of the function.",
+    "c1": "$(-\\infty, 0) \\cup (0, \\infty)$",
+    "c2": "$(-\\infty, 0]$",
+    "c3": "$(0, \\infty)$",
+    "c4": "ℝ",
+    "correct": 1
+  },
+  {
+    "id": 56,
+    "topic": "Relations and Functions",
+    "prompt": "Consider the function $f(x) = 2/x$ from a domain $D$ to ℝ. Find the co-domain of the function.",
+    "c1": "ℝ",
+    "c2": "$(0, \\infty)$",
+    "c3": "$(-\\infty, 0)$",
+    "c4": "$(–\\infty, 0) \\cup (0, \\infty)$",
+    "correct": 1
+  },
+  {
+    "id": 57,
+    "topic": "Relations and Functions",
+    "prompt": "Consider the function $f(x) = 2/x$ from a domain $D$ to ℝ. Find the range of the function.",
+    "c1": "ℝ",
+    "c2": "$(0, \\infty)$",
+    "c3": "$(-\\infty, 0)$",
+    "c4": "$(–\\infty, 0) \\cup (0, \\infty)$",
+    "correct": 4
+  },
+  {
+    "id": 58,
+    "topic": "Relations and Functions",
+    "prompt": "Consider the following functions from ℝ to ℝ:\nA. $f(x)=7x-5$\nB. $f(x)=3$\nC. $f(x)=2^x$\nD. $f(x)=x(x-1)(x-2)$\nWhich of these functions is surjective but not injective?",
+    "c1": "A",
+    "c2": "B",
+    "c3": "C",
+    "c4": "D",
+    "correct": 4
+  },
+  {
+    "id": 59,
+    "topic": "Relations and Functions",
+    "prompt": "Consider the following functions from ℝ to ℝ:\nA. $f(x)=7x-5$\nB. $f(x)=3$\nC. $f(x)=2^x$\nD. $f(x)=x(x-1)(x-2)$\nWhich of these functions is injective but not surjective?",
+    "c1": "A",
+    "c2": "B",
+    "c3": "C",
+    "c4": "D",
+    "correct": 3
+  },
+  {
+    "id": 60,
+    "topic": "Relations and Functions",
+    "prompt": "Consider the following functions from ℝ to ℝ:\nA. $f(x)=7x-5$\nB. $f(x)=3$\nC. $f(x)=2^x$\nD. $f(x)=x(x-1)(x-2)$\nWhich of these functions is bijective?",
+    "c1": "A",
+    "c2": "B",
+    "c3": "C",
+    "c4": "D",
+    "correct": 1
+  },
+  {
+    "id": 61,
+    "topic": "Relations and Functions",
+    "prompt": "Consider a set A with 3 elements. How many relations are there on set A?",
+    "c1": "1",
+    "c2": "9",
+    "c3": "27",
+    "c4": "512",
+    "correct": 4
+  },
+  {
+    "id": 62,
+    "topic": "Relations and Functions",
+    "prompt": "Let S={-2, 0, 2, 4, 5}. Find the set of values {f(x) | x ∈ S} when f(x)=x^2+1.",
+    "c1": "{5, 1, 5, 8, 3}",
+    "c2": "{5, 1, 5, 17, 26}",
+    "c3": "{3, 1, 5, 8, 3}",
+    "c4": "{-3, 1, 5, 17, 26}",
+    "correct": 2
+  },
+  {
+    "id": 63,
+    "topic": "Relations and Functions",
+    "prompt": "Let f(x) = 2x^3+1 and g(x) =x+3. Find f+g.",
+    "c1": "(f+g)(x) = 2x^3+x+4",
+    "c2": "(f+g)(x) = 2x^4+6x^3+x+3",
+    "c3": "(f+g)(x) = 2x^3+x+3",
+    "c4": "(f+g)(x) = 2x^4+x+3",
+    "correct": 1
+  },
+  {
+    "id": 64,
+    "topic": "Relations and Functions",
+    "prompt": "Let f(x) = 2x^3+1 and g(x) =x+3. Find fg.",
+    "c1": "(fg)(x) = 2x^4+6x^3+x+3",
+    "c2": "(fg)(x) = 2x^3+x+4",
+    "c3": "(fg)(x) = 2x^4+6x^3+2x+3",
+    "c4": "(fg)(x) = x^4+6x^3+x+3",
+    "correct": 1
+  },
+  {
+    "id": 65,
+    "topic": "Relations and Functions",
+    "prompt": "Let $f^{-1}(x) = x^2 + 7x-5$. Find the value of m, such that f(m)=5.",
+    "c1": "5",
+    "c2": "55",
+    "c3": "10",
+    "c4": "8",
+    "correct": 2
+  },
+  {
+    "id": 66,
+    "topic": "Relations and Functions",
+    "prompt": "Let f(x)=4x+8 and g(x)=x^2+3. What is the value of f∘g(3)?",
+    "c1": "3",
+    "c2": "56",
+    "c3": "259",
+    "c4": "No answer",
+    "correct": 2
+  },
+  {
+    "id": 67,
+    "topic": "Relations and Functions",
+    "prompt": "Let f(x)=4x+8 and g(x)=x^2+3. What is the value of g∘f(2)?",
+    "c1": "3",
+    "c2": "56",
+    "c3": "259",
+    "c4": "No answer",
+    "correct": 3
+  },
+  {
+    "id": 68,
+    "topic": "Relations and Functions",
+    "prompt": "Let $f(x)=(x-1)/4$. Determine the value of $⌊f(2)⌋$ and $⌈f(-2)⌉$ respectively.",
+    "c1": "0 and 0",
+    "c2": "0 and -1",
+    "c3": "-1 and 0",
+    "c4": "-1 and -1",
+    "correct": 1
+  },
+  {
+    "id": 69,
+    "topic": "Relations and Functions",
+    "prompt": "Determine whether $⌈x + y⌉ = ⌈x⌉ + ⌈y⌉$ is true for all real numbers x and y.",
+    "c1": "TRUE",
+    "c2": "FALSE",
+    "c3": "",
+    "c4": "",
+    "correct": 2
+  },
+  {
+    "id": 70,
+    "topic": "Relations and Functions",
+    "prompt": "Let S = { -1, 0, 2, 4, 7 }. Find the set ${ f(x) | x \\in S }$ when $f(x) = ⌊(x^2 + 1) / 3⌋$.",
+    "c1": "{ 1, 2, 6, 17 }",
+    "c2": "{ 0, 1, 5, 16 }",
+    "c3": "{ 0, 2, 6, 16 }",
+    "c4": "{ 0, 1, 6, 17 }",
+    "correct": 2
+  },
+  {
+    "id": 71,
+    "topic": "Relations and Functions",
+    "prompt": "Determine whether this statement is true or false: \"The floor function assigns to the real number x the largest integer that is less than or equal to x.\"",
+    "c1": "TRUE",
+    "c2": "FALSE",
+    "c3": "",
+    "c4": "",
+    "correct": 1
+  },
+  {
+    "id": 72,
+    "topic": "Relations and Functions",
+    "prompt": "From the choices below, which one is the definition of the ceiling function, denoted by $⌈x⌉$, for a real number x?",
+    "c1": "max{ $m∈ℤ$ | $m ≤ x$ }",
+    "c2": "max{ $m∈ℤ$ | $m ≥ x$ }",
+    "c3": "min{ $m∈ℤ$ | $m ≥ x$ }",
+    "c4": "min{ $m∈ℝ$ | $m ≥ x$ }",
+    "correct": 3
+  },
+  {
+    "id": 73,
+    "topic": "Relations and Functions",
+    "prompt": "Let R = {(1,1),(1,2),(1,4),(2,3),(3,2)} and S = {(1,1),(2,3),(3,2),(3,5),(4,2),(4,3)} be relations from {1,2,3,4} to {1,2,3,4,5}. Find n(R∪S), n(R∩S), n(R-S), and n(S-R) respectively.",
+    "c1": "3, 2, 3, 3",
+    "c2": "3, 5, 1, 4",
+    "c3": "8, 3, 2, 3",
+    "c4": "5, 5, 5, 5",
+    "correct": 3
+  },
+  {
+    "id": 74,
+    "topic": "Relations and Functions",
+    "prompt": "Consider the relations R1, R2, R3, R4 on the set {1, 2, 3, 4}. Select the relations that are symmetric.\nR1 = {(1,1),(1,3),(2,2),(3,1),(3,3),(4,4)}\nR2 = {(1,3),(2,2),(3,1)}\nR3 = {(1,2),(2,3),(2,4),(3,1),(4,1)}\nR4 = {(2,2),(2,3),(2,4),(3,2),(3,3),(3,4)}",
+    "c1": "R1, R2",
+    "c2": "R2, R3",
+    "c3": "R3, R4",
+    "c4": "R1, R3",
+    "correct": 1
+  },
+  {
+    "id": 75,
+    "topic": "Relations and Functions",
+    "prompt": "Consider the relations R1, R2, R3, R4 on the set {1, 2, 3, 4}. Select the relation that is reflexive.\nR1 = {(1,1),(1,3),(2,2),(3,1),(3,3),(4,4)}\nR2 = {(1,3),(2,2),(3,1)}\nR3 = {(1,2),(2,3),(2,4),(3,1),(4,1)}\nR4 = {(2,2),(2,3),(2,4),(3,2),(3,3),(3,4)}",
+    "c1": "R1",
+    "c2": "R2",
+    "c3": "R3",
+    "c4": "R4",
+    "correct": 1
+  },
+  {
+    "id": 76,
+    "topic": "Relations and Functions",
+    "prompt": "Consider the relations R1, R2, R3, R4 on the set {1, 2, 3, 4}. Select the relations that are transitive.\nR1 = {(1,1),(1,3),(2,2),(3,1),(3,3),(4,4)}\nR2 = {(1,3),(2,2),(3,1)}\nR3 = {(1,2),(2,3),(2,4),(3,1),(4,1)}\nR4 = {(2,2),(2,3),(2,4),(3,2),(3,3),(3,4)}",
+    "c1": "R1, R4",
+    "c2": "R2, R3",
+    "c3": "R1, R2",
+    "c4": "R2, R4",
+    "correct": 1
+  },
+  {
+    "id": 77,
+    "topic": "Relations and Functions",
+    "prompt": "Let R be a relation from {1,2,3} to {1,2,3,4} with R={(1,1),(1,2),(2,3),(3,3),(3,4)} and S be a relation from {1,2,3,4} to {5,6,7} with S={(1,5),(3,6),(3,7),(4,5)}. Which choice is NOT in the composition relation $S \\circ R$?",
+    "c1": "(1,5)",
+    "c2": "(2,7)",
+    "c3": "(3,5)",
+    "c4": "(1,1)",
+    "correct": 4
+  },
+  {
+    "id": 78,
+    "topic": "Relations and Functions",
+    "prompt": "Consider the relations on the set {1, 2, 3, 4} given below. Select the relation that is anti-symmetric.\nR1 = {(1,1),(1,3),(2,2),(3,1),(3,3),(4,4)}\nR2 = {(1,3),(2,2),(3,1),(1,4)}\nR3 = {(1,2),(2,3),(2,4),(3,1),(4,1)}\nR4 = {(2,2),(2,3),(2,4),(3,2),(3,3),(4,2)}",
+    "c1": "R1",
+    "c2": "R2",
+    "c3": "R3",
+    "c4": "R4",
+    "correct": 3
+  },
+  {
+    "id": 79,
+    "topic": "Relations and Functions",
+    "prompt": "Consider the relations on the set {1, 2, 3, 4} given below. Select the relation that is anti-symmetric.\nR1 = {(1,1),(2,2),(1,2),(2,1)}\nR2 = {(2,1),(2,2),(1,3)}\nR3 = {(1,3),(2,4),(3,1),(4,1)}\nR4 = {(3,2),(2,3),(2,2),(3,3),(4,2)}",
+    "c1": "R1",
+    "c2": "R2",
+    "c3": "R3",
+    "c4": "R4",
+    "correct": 2
+  },
+  {
+    "id": 80,
+    "topic": "Methods of Proof",
+    "prompt": "Consider the following statement: “The sum of two even integers is even.” Which of the following methods is most appropriate to prove the given statement?",
+    "c1": "By direct proof: Let m and n be any two even integers.",
+    "c2": "By induction: Prove that the statement holds for a base case, like 2+2=4.",
+    "c3": "By counterexample: Provide an example where the sum of two even integers is not even.",
+    "c4": "By contradiction: Assume the sum of two even integers is odd.",
+    "correct": 1
+  },
+  {
+    "id": 81,
+    "topic": "Methods of Proof",
+    "prompt": "Consider the following proof that attempts to show '1 = 2'. Which step contains the logical error that invalidates the proof?\n(1) a = b (Given)\n(2) a² = ab (Multiply both sides by a)\n(3) a² - b² = ab - b² (Subtract b² from both sides)\n(4) (a - b)(a + b) = b(a - b) (Factor both sides)\n(5) a + b = b (Divide both sides by a - b)\n(6) 2b = b (Replace a with b, since a=b)\n(7) 2 = 1 (Divide both sides by b)",
+    "c1": "Step (3)",
+    "c2": "Step (5)",
+    "c3": "Step (6)",
+    "c4": "Step (7)",
+    "correct": 2
+  },
+  {
+    "id": 82,
+    "topic": "Methods of Proof",
+    "prompt": "Consider the following direct proof for 'If n is an odd integer, then n² is odd.'\n(1) n = 2k + 1\n(2) n² = (2k + 1)²\n(3) n² = 2(2k² + 2k) + 1\n(4) n² = 2K + 1\n(5) n² is odd.\nWhat is the step that makes this proof WRONG?",
+    "c1": "Step (1)",
+    "c2": "Step (2)",
+    "c3": "Step (4)",
+    "c4": "None of the above.",
+    "correct": 4
+  },
+  {
+    "id": 83,
+    "topic": "Methods of Proof",
+    "prompt": "Consider the statement: “If m and n are integers and mn is even, then m is even or n is even.” Which of the following methods is most suitable to prove this?",
+    "c1": "Vacuous Proof",
+    "c2": "Contraposition Proof",
+    "c3": "Induction",
+    "c4": "None of the above",
+    "correct": 2
+  },
+  {
+    "id": 84,
+    "topic": "Methods of Proof",
+    "prompt": "In order to prove the statement “If m and n are integers and mn is even, then m is even or n is even” using proof by contraposition, which of the following assumptions should be used for the first step?",
+    "c1": "Assume that “m is odd and n is odd.”",
+    "c2": "Assume that “m is even or n is even.”",
+    "c3": "Assume that “mn is even.”",
+    "c4": "Assume that “mn is odd.”",
+    "correct": 1
+  },
+  {
+    "id": 85,
+    "topic": "Methods of Proof",
+    "prompt": "Consider the statement: “If n ∈ ℤ⁺ and n² < 0, then n is prime.” Which of the following methods can be used to prove this statement?",
+    "c1": "Vacuous Proof",
+    "c2": "Contraposition Proof",
+    "c3": "Induction",
+    "c4": "None of the above",
+    "correct": 1
+  },
+  {
+    "id": 86,
+    "topic": "Methods of Proof",
+    "prompt": "Let n ∈ ℤ. In order to prove the statement \"If n is divisible by 7, then n is divisible by 1\" using a Trivial Proof, what must be shown to be true?",
+    "c1": "Assume that n is divisible by 7.",
+    "c2": "Show that n is divisible by 1.",
+    "c3": "Assume that n is not divisible by 1.",
+    "c4": "Assume that n is divisible by both 1 and 7.",
+    "correct": 2
+  },
+  {
+    "id": 87,
+    "topic": "Methods of Proof",
+    "prompt": "Consider the following statement: “If 3n+2 is even, then n is even for all integers n.” Which of the following methods can be used to prove the given statement?",
+    "c1": "Contradiction Proof",
+    "c2": "Contraposition Proof",
+    "c3": "Both contradiction and contraposition can be used",
+    "c4": "None of the above",
+    "correct": 3
+  },
+  {
+    "id": 88,
+    "topic": "Methods of Proof",
+    "prompt": "Consider the following statement: “At least 3 of any 25 days chosen must fall in the same month of the year.” By using a proof by CONTRADICTION, which of the following is the best assumption for the first step?",
+    "c1": "Assume that “At least 3 of any 25 days chosen must fall on the same month of the year” is true.",
+    "c2": "Assume that “At most 3 of any 25 days chosen must fall on the same month of the year” is true.",
+    "c3": "Assume that “There are more than 3 of any 25 days chosen that fall on the same month of the year” is true.",
+    "c4": "Assume that “There are less than 3 (at most 2) of any 25 days chosen that fall on the same month of the year” is true.",
+    "correct": 4
+  },
+  {
+    "id": 89,
+    "topic": "Methods of Proof",
+    "prompt": "Find the smallest positive integer k such that $2n^2+n+k$ is not divisible by 3, for all integers n.",
+    "c1": "0",
+    "c2": "1",
+    "c3": "2",
+    "c4": "3",
+    "correct": 2
+  },
+  {
+    "id": 90,
+    "topic": "Methods of Proof",
+    "prompt": "To prove the statement “If n is an integer, then n² − 5n + 7 is an odd integer” by proof by cases, which of the following choices provide a valid and complete set of cases for all integers?",
+    "c1": "Case 1: n is even; Case 2: n is odd.",
+    "c2": "Case 1: n > 0; Case 2: n < 0.",
+    "c3": "Case 1: n = 2k + 1 for some integer k; Case 2: n = 2k for some integer k.",
+    "c4": "Both 1 and 3 are valid choices.",
+    "correct": 4
+  },
+  {
+    "id": 91,
+    "topic": "Methods of Proof",
+    "prompt": "To prove the statement “If n is an integer, then $n^2 - 5n + 7$ is an odd integer” by proof by cases, which of the following choices provide a valid and complete set of cases for all integers?\n1. case 1: n is even; case 2: n is odd.\n2. case 1: n > 0; case 2: n < 0.\n3. case 1: n = 2k + 1; case 2: n = 2k.\n4. case 1: n = 4k + 1; case 2: n = 4k + 2; case 3: n = 4k + 3.",
+    "c1": "1 or 2",
+    "c2": "1 or 3",
+    "c3": "1 or 4",
+    "c4": "3 or 4",
+    "correct": 2
+  },
+  {
+    "id": 92,
+    "topic": "Methods of Proof",
+    "prompt": "Find the smallest positive integer n that serves as a counterexample to the statement that $n^2 + n + 17$ is not divisible by 17.",
+    "c1": "14",
+    "c2": "15",
+    "c3": "16",
+    "c4": "17",
+    "correct": 3
+  },
+  {
+    "id": 93,
+    "topic": "Methods of Proof",
+    "prompt": "Which of the following best describes the statement “There exists a triple (a, b, c) of positive integers such that $a^2 + b^2 = c^2$” and the attempt to prove it by choosing a = 3, b = 4, c = 5?",
+    "c1": "The choice of a = 3, b = 4, c = 5 correctly proves the statement by example.",
+    "c2": "The choice of a = 3, b = 4, c = 5 is not a valid solution to the statement.",
+    "c3": "The statement cannot be proven using any values of a, b, c.",
+    "c4": "None of the above",
+    "correct": 1
+  },
+  {
+    "id": 94,
+    "topic": "Methods of Proof",
+    "prompt": "Suppose we have the following proof by Mathematical Induction:\n\nProve that $7^{3m} - 1$ is divisible by 19 for all positive integers m.\n\nLet P(n): $19 | (7^{3n} - 1)$\n\n**Basis Step:** P(1): $19 | (7^3 - 1) \\rightarrow 19 | 342 \\rightarrow P(1)$ is True.\n\n**Inductive Step:** Assume P(k) is true for any positive integer k. So, $19 | (7^{3k} - 1)$. We must prove P(k+1) is true, meaning $7^{3(k+1)} - 1$ is divisible by 19.\n\nThe proof then states: 'k+1 can be written as a positive integer r. Therefore, the statement becomes P(r). We can conclude that P(r) is true, as the assumption states that P(k) is true for any positive integer k.'\n\nWhich statement below is correct?",
+    "c1": "This proof is valid.",
+    "c2": "This proof is invalid.",
+    "c3": "",
+    "c4": "",
+    "correct": 2
+  },
+  {
+    "id": 95,
+    "topic": "Methods of Proof",
+    "prompt": "Which step is wrong in this proof by induction?\n\n- **Theorem:** All Americans are the same age.\n- **Let P(n):** In any group of n Americans, everyone in that group is the same age.\n- **Basis Step:** Since everyone in a group of one American has the same age, P(1) is true.\n\n- **Inductive Step:**\nAssume P(k) is true for some k. We prove P(k+1).\n\n[1] Let A be an arbitrary set of k+1 Americans. We show that everyone in A has the same age by showing that any two members of A have the same age.\n\n[2] Let a and b be two people in A. Since A has k+1 members, a (who is in A) has the same age as any other person in A. Similarly, b has the same age as any other person in A.\n\n[3] Now, let c be any person in A other than a and b. Then, a and b are in {c, a} and {c, b} respectively. So, a and b both have the same age as c.\nHence, a and b have the same age.\n\nThis proves P(k+1).",
+    "c1": "[1]",
+    "c2": "[2]",
+    "c3": "[3]",
+    "c4": "None of the above.",
+    "correct": 3
+  },
+  {
+    "id": 96,
+    "topic": "Methods of Proof",
+    "prompt": "Suppose we want to prove that $1+2+...+n$ is equal to $n(n+1)/2$, by mathematical induction. Which pair of expressions should be proved equal by the end of the proof?",
+    "c1": "$1+2+...+k+(k+1)$ and $(k+1)(k+2)/2$",
+    "c2": "$k(k+1)/2+(k+1)$ and $(k+1)(k+2)/2$",
+    "c3": "$1+2+...+k$ and $k(k+1)/2$",
+    "c4": "None of the above.",
+    "correct": 1
+  },
+  {
+    "id": 97,
+    "topic": "Methods of Proof",
+    "prompt": "Use strong induction to prove or disprove the statement: Every positive integer greater than or equal to 6 can be expressed as the sum of non-negative multiples of 2 and 3.",
+    "c1": "The statement is not true for all positive integers greater than or equal to 6.",
+    "c2": "The statement is only true for numbers that are divisible by 6.",
+    "c3": "The statement is true.",
+    "c4": "None of the above.",
+    "correct": 3
+  },
+  {
+    "id": 98,
+    "topic": "Methods of Proof",
+    "prompt": "What is wrong with this proof by strong induction?\n\n**Theorem:** For every nonnegative integer n, $5n = 0$.\n**Basis Step:** $5 \\cdot 0 = 0$.\n**Inductive Step:** Suppose that $5j = 0$ for all nonnegative integers j with $0 \\le j \\le k$. \nWrite $k+1 = i+j$, where i and j are nonnegative integers less than k+1. \nBy the inductive hypothesis, $5(k+1) = 5(i+j) = 5i+5j = 0+0 = 0$.",
+    "c1": "The basis step cannot be conducted like this.",
+    "c2": "The assumption for the inductive step is incorrect in the context of strong induction.",
+    "c3": "The expression 'k+1' in the inductive step cannot always be written as a sum of two smaller non-negative integers.",
+    "c4": "The proof was miscalculated.",
+    "correct": 3
+  },
+  {
+    "id": 99,
+    "topic": "sets",
+    "prompt": "Which of the following is a subset of the set {1, 2, 3}?",
+    "c1": "{1, 2}",
+    "c2": "{4}",
+    "c3": "{1, 2, 3, 4}",
+    "c4": "{}",
+    "correct": 1
+  },
+  {
+    "id": 100,
+    "topic": "logic",
+    "prompt": "Which of the following statements is a tautology?",
+    "c1": "p ∨ ¬p",
+    "c2": "p ∧ ¬p",
+    "c3": "p → q",
+    "c4": "p ↔ q",
+    "correct": 1
+  },
+  {
+    "id": 101,
+    "topic": "logic",
+    "prompt": "Which of the following statements is a tautology?",
+    "c1": "p ∨ ¬p",
+    "c2": "p ∧ ¬p",
+    "c3": "p → q",
+    "c4": "p ↔ q",
+    "correct": 1
+  }
+]

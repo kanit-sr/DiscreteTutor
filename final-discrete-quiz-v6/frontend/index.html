@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Discrete Math Quiz</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="container">
+      <h1>Discrete Math Quiz</h1>
+      <nav>
+        <button data-view="home">Home</button>
+        <button data-view="questions">Questions</button>
+        <button data-view="take">Take Quiz</button>
+        <button data-view="attempts">Attempts</button>
+      </nav>
+    </header>
+
+    <main id="view-home" class="view container">
+      <div class="card">
+        <h2>Welcome</h2>
+        <p>Practice Discrete Math with topic-based random quizzes. Use AI to explain and to generate new questions.</p>
+      </div>
+    </main>
+
+    <main id="view-questions" class="view container hidden">
+      <h2>Manage Questions</h2>
+      <div class="card">
+        <h3>AI Generate Question</h3>
+        <form id="q-ai-form" class="row">
+          <input name="topic" placeholder="topic (logic/sets/relations/graphs/proof)" required />
+          <button>Generate with AI</button>
+        </form>
+      </div>
+      <ul id="q-list" class="stack"></ul>
+    </main>
+
+    <main id="view-take" class="view container hidden">
+      <h2>Take Quiz</h2>
+      <form id="topics-form" class="card">
+        <div><b>Choose topics:</b></div>
+        <div id="topics-box" class="row"></div>
+        <div class="row">
+          <label>Number of questions: <input id="topics-count" type="number" min="1" max="100" value="30" /></label>
+          <button id="start-quiz" type="submit">Start</button>
+        </div>
+      </form>
+      <div id="quiz"></div>
+      <button id="submit-quiz" class="hidden">Submit</button>
+      <div id="result"></div>
+    </main>
+
+    <main id="view-attempts" class="view container hidden">
+      <h2>Attempts</h2>
+      <div id="attempts" class="stack"></div>
+    </main>
+
+    <script src="/app.js"></script>
+  
+<div id="attempt-modal" class="modal-backdrop">
+  <div class="modal">
+    <header>
+      <h3>Attempt Detail</h3>
+      <button id="attempt-close">Close</button>
+    </header>
+    <div id="attempt-content"></div>
+  </div>
+</div>
+</body>
+</html>
