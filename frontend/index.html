@@ -5,7 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Discrete Math Quiz</title>
     <link rel="stylesheet" href="/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
   </head>
+
+  <!-- Chatbot widget -->
+<div id="chatbot">
+  <div id="chatbot-header">
+    <span>💬 Tutor Bot</span>
+    <button id="chatbot-toggle">_</button>
+  </div>
+  <div id="chatbot-messages"></div>
+  <form id="chatbot-form">
+    <input type="text" id="chatbot-input" placeholder="Ask me anything..." required />
+    <button>Send</button>
+  </form>
+</div>
+
+
+
   <body>
     <header class="container">
       <h1>Discrete Math Quiz</h1>
@@ -14,6 +31,7 @@
         <button data-view="questions">Questions</button>
         <button data-view="take">Take Quiz</button>
         <button data-view="attempts">Attempts</button>
+        <button id="theme-toggle">🌙</button>
       </nav>
     </header>
 
