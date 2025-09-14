@@ -41,14 +41,25 @@ const server = http.createServer((req, res) => {
   // API routes
   if (url.pathname.startsWith('/api/')) {
     if (url.pathname === '/api/questions' && req.method === 'GET') return Questions.listQuestions(req, res);
+    if (url.pathname === '/api/questions/clear' && req.method === 'POST') return Questions.clearAll(req, res);
+    if (url.pathname.startsWith('/api/questions/') && req.method === 'DELETE') {
+      const id = url.pathname.split('/').pop();
+      return Questions.delete(req, res, id);
+    }
     if (url.pathname === '/api/ai/explain' && req.method === 'POST') return AI.explain(req, res);
     if (url.pathname === '/api/ai/generate-question' && req.method === 'POST') return AI.generateQuestion(req, res);
+    if (url.pathname === '/api/ai/chat' && req.method === 'POST') return AI.chat(req, res);
     if (url.pathname === '/api/quiz/generate' && req.method === 'GET') return Quiz.generate(req, res, url);
     if (url.pathname === '/api/attempts' && req.method === 'POST') return Attempts.create(req, res);
     if (url.pathname === '/api/attempts' && req.method === 'GET') return Attempts.list(req, res);
+    if (url.pathname === '/api/attempts/clear' && req.method === 'POST') return Attempts.clearAll(req, res);
     if (url.pathname.startsWith('/api/attempts/') && req.method === 'GET') {
       const id = url.pathname.split('/').pop();
       return Attempts.read(req, res, id);
+    }
+    if (url.pathname.startsWith('/api/attempts/') && req.method === 'DELETE') {
+      const id = url.pathname.split('/').pop();
+      return Attempts.delete(req, res, id);
     }
     res.statusCode = 404; return res.end(JSON.stringify({ error: 'Not found' }));
   }

@@ -56,4 +56,31 @@ function read(_req, res, id) {
   res.setHeader('Content-Type', 'application/json');
   res.end(JSON.stringify(rec || { error: 'Not found' }));
 }
-module.exports = { create, list, read };
+
+function deleteAttempt(_req, res, id) {
+  const attempts = readJSON(DATA_DIR, 'attempts.json', []);
+  const index = attempts.findIndex(a => a.id === Number(id));
+  
+  if (index === -1) {
+    res.statusCode = 404;
+    res.setHeader('Content-Type', 'application/json');
+    return res.end(JSON.stringify({ error: 'Attempt not found' }));
+  }
+  
+  attempts.splice(index, 1);
+  writeJSON(DATA_DIR, 'attempts.json', attempts);
+  
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/json');
+  res.end(JSON.stringify({ message: 'Attempt deleted successfully' }));
+}
+
+function clearAll(_req, res) {
+  writeJSON(DATA_DIR, 'attempts.json', []);
+  
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/json');
+  res.end(JSON.stringify({ message: 'All attempts cleared successfully' }));
+}
+
+module.exports = { create, list, read, delete: deleteAttempt, clearAll };

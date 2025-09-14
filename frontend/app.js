@@ -5,6 +5,7 @@ const API = {
   genq: '/api/ai/generate-question',
   quizgen: '/api/quiz/generate',
   attempts: '/api/attempts',
+  chat: '/api/ai/chat'
 };
 
 // ========== Simple client-side view router ==========
@@ -67,11 +68,21 @@ async function loadQuestions() {
   const items = await res.json();
   qList.innerHTML = items.map(q => `
     <li class="card">
-      <div><b>[${q.topic}]</b> ${q.prompt}</div>
-      <div>1) ${q.c1}<br>2) ${q.c2}<br>3) ${q.c3}<br>4) ${q.c4}</div>
-      <div><i>Answer: ${q.correct}</i></div>
+      <div class="question-header">
+        <div class="question-content">
+          <div><b>[${q.topic}]</b> ${q.prompt}</div>
+          <div>1) ${q.c1}<br>2) ${q.c2}<br>3) ${q.c3}<br>4) ${q.c4}</div>
+          <div><i>Answer: ${q.correct}</i></div>
+        </div>
+        <button class="delete-btn" onclick="deleteQuestion(${q.id})" title="Delete question">🗑️</button>
+      </div>
     </li>
   `).join('');
+  
+  // Trigger MathJax rendering for questions list
+  if (window.MathJax) {
+    MathJax.typesetPromise([qList]);
+  }
 }
 
 // ========== TAKE QUIZ ==========
@@ -130,6 +141,11 @@ function renderQuestions(list) {
     `;
   }).join('');
 
+  // Trigger MathJax rendering for quiz questions
+  if (window.MathJax) {
+    MathJax.typesetPromise([quizDiv]);
+  }
+
   // Choice highlighting
   document.querySelectorAll('.choice input').forEach(inp => {
     inp.addEventListener('change', () => {
@@ -150,6 +166,7 @@ async function onExplain(ev) {
   const sec = ev.target.closest('.q');
   const outDiv = sec.querySelector('.ai');
   outDiv.textContent = 'Thinking...';
+  
   try {
     const res = await fetch(API.explain, {
       method: 'POST',
@@ -157,9 +174,13 @@ async function onExplain(ev) {
       body: JSON.stringify(q)
     });
     const out = await res.json();
-    outDiv.textContent = out.explanation || out.error || 'No explanation';
+    outDiv.innerHTML = out.explanation || out.error || 'No explanation';
+    // Trigger MathJax rendering
+    if (window.MathJax) {
+      MathJax.typesetPromise([outDiv]);
+    }
   } catch (err) {
-    outDiv.textContent = '⚠️ Network error: ' + err.message;
+    outDiv.innerHTML = '⚠️ Network error: ' + err.message;
   }
 }
 
@@ -198,13 +219,53 @@ async function loadAttempts() {
   const res = await fetch('/api/attempts');
   const items = await res.json();
   document.getElementById('attempts').innerHTML = items.map(a => `
-    <div class="card" onclick="openAttemptDetail(${a.id})">
-      <div><b>Attempt #${a.id}</b> — Score ${a.score}/${a.answers.length}</div>
-      <div>Topics: ${(a.topics || []).join(', ')}</div>
-      <div><small>${a.finished_at}</small></div>
+    <div class="card attempt-card">
+      <div class="attempt-content" onclick="openAttemptDetail(${a.id})">
+        <div><b>Attempt #${a.id}</b> — Score ${a.score}/${a.answers.length}</div>
+        <div>Topics: ${(a.topics || []).join(', ')}</div>
+        <div><small>${a.finished_at}</small></div>
+      </div>
+      <button class="delete-btn" onclick="deleteAttempt(${a.id})" title="Delete attempt">🗑️</button>
     </div>
   `).join('');
 }
+
+// ========== Clear All Buttons ==========
+document.getElementById('clear-all-questions')?.addEventListener('click', async () => {
+  if (!confirm('Are you sure you want to delete ALL questions? This action cannot be undone!')) return;
+  
+  try {
+    const res = await fetch('/api/questions/clear', { method: 'POST' });
+    const result = await res.json();
+    
+    if (res.ok) {
+      toast('✅ All questions cleared successfully');
+      loadQuestions(); // Refresh the questions list
+    } else {
+      toast('❌ Error: ' + (result.error || 'Failed to clear questions'));
+    }
+  } catch (err) {
+    toast('⚠️ Network error: ' + err.message);
+  }
+});
+
+document.getElementById('clear-all-attempts')?.addEventListener('click', async () => {
+  if (!confirm('Are you sure you want to delete ALL attempts? This action cannot be undone!')) return;
+  
+  try {
+    const res = await fetch('/api/attempts/clear', { method: 'POST' });
+    const result = await res.json();
+    
+    if (res.ok) {
+      toast('✅ All attempts cleared successfully');
+      loadAttempts(); // Refresh the attempts list
+    } else {
+      toast('❌ Error: ' + (result.error || 'Failed to clear attempts'));
+    }
+  } catch (err) {
+    toast('⚠️ Network error: ' + err.message);
+  }
+});
 
 // default view
 showView('home');
@@ -237,6 +298,11 @@ async function openAttemptDetail(id) {
     return `<section class="${blockClass}"><p><b>Q${i+1}.</b> ${q.prompt || ''}</p>${opts}</section>`;
   }).join('');
 
+  // Trigger MathJax rendering for attempt details
+  if (window.MathJax) {
+    MathJax.typesetPromise([modalBody]);
+  }
+
   modal.style.display = 'flex';
 }
 
@@ -255,6 +321,7 @@ const chatMsgs = document.getElementById('chatbot-messages');
 const chatForm = document.getElementById('chatbot-form');
 const chatInput = document.getElementById('chatbot-input');
 const chatToggle = document.getElementById('chatbot-toggle');
+const chatHeader = document.getElementById('chatbot-header');
 
 // collapse/expand
 chatToggle.onclick = () => {
@@ -267,12 +334,102 @@ chatToggle.onclick = () => {
   }
 };
 
+// Make chatbot draggable
+let isDragging = false;
+let isResizing = false;
+let startX, startY, startWidth, startHeight, startLeft, startTop;
+
+// Header drag functionality
+chatHeader.addEventListener('mousedown', (e) => {
+  if (e.target === chatToggle) return; // Don't drag when clicking toggle button
+  
+  isDragging = true;
+  chatbot.classList.add('dragging');
+  
+  const rect = chatbot.getBoundingClientRect();
+  startX = e.clientX - rect.left;
+  startY = e.clientY - rect.top;
+  
+  document.addEventListener('mousemove', handleDrag);
+  document.addEventListener('mouseup', stopDrag);
+  e.preventDefault();
+});
+
+// Resize functionality
+chatbot.addEventListener('mousedown', (e) => {
+  const rect = chatbot.getBoundingClientRect();
+  const isResizeHandle = (
+    e.clientX > rect.right - 20 && e.clientY > rect.bottom - 20
+  );
+  
+  if (isResizeHandle) {
+    isResizing = true;
+    chatbot.classList.add('resizing');
+    
+    startX = e.clientX;
+    startY = e.clientY;
+    startWidth = rect.width;
+    startHeight = rect.height;
+    
+    document.addEventListener('mousemove', handleResize);
+    document.addEventListener('mouseup', stopResize);
+    e.preventDefault();
+  }
+});
+
+function handleDrag(e) {
+  if (!isDragging) return;
+  
+  const newLeft = e.clientX - startX;
+  const newTop = e.clientY - startY;
+  
+  // Keep within viewport bounds
+  const maxLeft = window.innerWidth - chatbot.offsetWidth;
+  const maxTop = window.innerHeight - chatbot.offsetHeight;
+  
+  chatbot.style.left = Math.max(0, Math.min(newLeft, maxLeft)) + 'px';
+  chatbot.style.top = Math.max(0, Math.min(newTop, maxTop)) + 'px';
+  chatbot.style.right = 'auto';
+  chatbot.style.bottom = 'auto';
+}
+
+function handleResize(e) {
+  if (!isResizing) return;
+  
+  const deltaX = e.clientX - startX;
+  const deltaY = e.clientY - startY;
+  
+  const newWidth = Math.max(250, startWidth + deltaX);
+  const newHeight = Math.max(200, startHeight + deltaY);
+  
+  chatbot.style.width = newWidth + 'px';
+  chatbot.style.height = newHeight + 'px';
+}
+
+function stopDrag() {
+  isDragging = false;
+  chatbot.classList.remove('dragging');
+  document.removeEventListener('mousemove', handleDrag);
+  document.removeEventListener('mouseup', stopDrag);
+}
+
+function stopResize() {
+  isResizing = false;
+  chatbot.classList.remove('resizing');
+  document.removeEventListener('mousemove', handleResize);
+  document.removeEventListener('mouseup', stopResize);
+}
+
 function addMsg(text, who='bot') {
   const div = document.createElement('div');
   div.className = `chat-msg ${who}`;
-  div.textContent = text;
+  div.innerHTML = text;
   chatMsgs.appendChild(div);
   chatMsgs.scrollTop = chatMsgs.scrollHeight;
+  // Trigger MathJax rendering
+  if (window.MathJax) {
+    MathJax.typesetPromise([div]);
+  }
 }
 
 chatForm.onsubmit = async (e) => {
@@ -284,14 +441,55 @@ chatForm.onsubmit = async (e) => {
   addMsg('Thinking...', 'bot');
 
   try {
-    const res = await fetch('/api/ai/chat', {
+    const res = await fetch(API.chat, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: msg })
     });
     const out = await res.json();
-    chatMsgs.lastChild.textContent = out.reply || out.error || 'No response';
+    chatMsgs.lastChild.innerHTML = out.reply || out.error || 'No response';
+    // Trigger MathJax rendering for the bot response
+    if (window.MathJax) {
+      MathJax.typesetPromise([chatMsgs.lastChild]);
+    }
   } catch (err) {
-    chatMsgs.lastChild.textContent = '⚠️ Network error';
+    chatMsgs.lastChild.innerHTML = '⚠️ Network error';
   }
 };
+
+// ========== Delete Functions ==========
+async function deleteQuestion(id) {
+  if (!confirm('Are you sure you want to delete this question?')) return;
+  
+  try {
+    const res = await fetch(`/api/questions/${id}`, { method: 'DELETE' });
+    const result = await res.json();
+    
+    if (res.ok) {
+      toast('✅ Question deleted successfully');
+      loadQuestions(); // Refresh the questions list
+    } else {
+      toast('❌ Error: ' + (result.error || 'Failed to delete question'));
+    }
+  } catch (err) {
+    toast('⚠️ Network error: ' + err.message);
+  }
+}
+
+async function deleteAttempt(id) {
+  if (!confirm('Are you sure you want to delete this attempt?')) return;
+  
+  try {
+    const res = await fetch(`/api/attempts/${id}`, { method: 'DELETE' });
+    const result = await res.json();
+    
+    if (res.ok) {
+      toast('✅ Attempt deleted successfully');
+      loadAttempts(); // Refresh the attempts list
+    } else {
+      toast('❌ Error: ' + (result.error || 'Failed to delete attempt'));
+    }
+  } catch (err) {
+    toast('⚠️ Network error: ' + err.message);
+  }
+}

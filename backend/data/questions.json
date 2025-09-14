@@ -928,5 +928,15 @@
     "c3": "p → q",
     "c4": "p ↔ q",
     "correct": 1
+  },
+  {
+    "id": 102,
+    "topic": "logic",
+    "prompt": "Which of the following statements is a tautology?",
+    "c1": "p ∨ ¬p",
+    "c2": "p ∧ ¬p",
+    "c3": "p → q",
+    "c4": "p ↔ q",
+    "correct": 1
   }
 ]

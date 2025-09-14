@@ -47,15 +47,19 @@ label{cursor:pointer}
   padding: 10px 14px;
   margin: 6px 0;
   cursor: pointer;
-  transition: all .2s;
   background: #fff;
+  transition: all .2s;
+  user-select: none;
 }
 .choice:hover {
   border-color: var(--brand);
-  background: #f8f9ff;
+  background: #f8faff;
 }
 .choice input {
   display: none;
+}
+.choice span {
+  display: inline-block;
 }
 .choice.selected {
   border-color: var(--brand-dark);
@@ -80,59 +84,6 @@ label{cursor:pointer}
 @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:none;} }
 @keyframes fadeOut { to{opacity:0; transform:translateY(10px);} }
 
-.choice {
-  display: block;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 10px 14px;
-  margin: 6px 0;
-  cursor: pointer;
-  background: #fff;
-  transition: all .2s;
-  user-select: none;
-}
-.choice:hover {
-  border-color: var(--brand);
-  background: #f8faff;
-}
-.choice input {
-  display: none;
-}
-.choice span {
-  display: inline-block;
-}
-.choice.selected {
-  border-color: var(--brand-dark);
-  background: #eef2ff;
-  font-weight: 600;
-}
-
-/* ========= Toast system ========= */
-.toast-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  z-index: 9999;
-}
-.toast {
-  background: #334155; /* slate gray */
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.2);
-  font-size: 14px;
-  animation: fadeIn .3s ease, fadeOut .5s ease 3.5s forwards;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: none; }
-}
-@keyframes fadeOut {
-  to   { opacity: 0; transform: translateY(10px); }
-}
 
 /* ====== Theme variables ====== */
 :root {
@@ -177,6 +128,20 @@ header {
   background: var(--ai-bg);
 }
 
+/* MathJax styling */
+.MathJax {
+  font-size: 1.1em;
+}
+
+.chat-msg .MathJax {
+  font-size: 1em;
+}
+
+/* Ensure math expressions don't break layout */
+.MathJax_Display {
+  margin: 0.5em 0;
+}
+
 /* Choices adjust for dark mode */
 .choice {
   background: var(--card-bg);
@@ -202,6 +167,10 @@ body.dark .toast {
   right: 20px;
   width: 300px;
   height: 400px;
+  min-width: 250px;
+  min-height: 200px;
+  max-width: 80vw;
+  max-height: 80vh;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 12px;
@@ -211,6 +180,8 @@ body.dark .toast {
   overflow: hidden;
   font-size: 14px;
   z-index: 3000;
+  resize: both;
+  cursor: default;
 }
 #chatbot-header {
   background: var(--brand);
@@ -219,6 +190,9 @@ body.dark .toast {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: move;
+  user-select: none;
+  border-radius: 12px 12px 0 0;
 }
 #chatbot-header button {
   background: transparent;
@@ -272,4 +246,86 @@ body.dark .toast {
 }
 body.dark #chatbot {
   box-shadow: 0 6px 20px rgba(255,255,255,0.1);
+}
+
+/* Resize handle styling */
+#chatbot::-webkit-resizer {
+  background: var(--card-border);
+  border-radius: 0 0 12px 0;
+}
+
+#chatbot::-webkit-resizer:hover {
+  background: var(--brand);
+}
+
+/* Dragging state */
+#chatbot.dragging {
+  transition: none;
+  user-select: none;
+}
+
+#chatbot.resizing {
+  transition: none;
+}
+
+/* ========== Management Buttons ========== */
+.delete-btn {
+  background: #ef4444 !important;
+  color: white !important;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover {
+  background: #dc2626 !important;
+  transform: scale(1.05);
+}
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.question-content {
+  flex: 1;
+}
+
+.attempt-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.attempt-content {
+  flex: 1;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.attempt-content:hover {
+  background: rgba(79, 70, 229, 0.05);
+}
+
+/* Dark mode adjustments */
+body.dark .delete-btn {
+  background: #dc2626 !important;
+}
+
+body.dark .delete-btn:hover {
+  background: #b91c1c !important;
+}
+
+body.dark .attempt-content:hover {
+  background: rgba(79, 70, 229, 0.1);
 }

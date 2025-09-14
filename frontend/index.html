@@ -6,24 +6,36 @@
     <title>Discrete Math Quiz</title>
     <link rel="stylesheet" href="/styles.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   </head>
 
-  <!-- Chatbot widget -->
-<div id="chatbot">
-  <div id="chatbot-header">
-    <span>💬 Tutor Bot</span>
-    <button id="chatbot-toggle">_</button>
-  </div>
-  <div id="chatbot-messages"></div>
-  <form id="chatbot-form">
-    <input type="text" id="chatbot-input" placeholder="Ask me anything..." required />
-    <button>Send</button>
-  </form>
-</div>
-
-
-
   <body>
+    <!-- Chatbot widget -->
+    <div id="chatbot">
+      <div id="chatbot-header">
+        <span>💬 Tutor Bot</span>
+        <button id="chatbot-toggle">_</button>
+      </div>
+      <div id="chatbot-messages"></div>
+      <form id="chatbot-form">
+        <input type="text" id="chatbot-input" placeholder="Ask me anything..." required />
+        <button>Send</button>
+      </form>
+    </div>
     <header class="container">
       <h1>Discrete Math Quiz</h1>
       <nav>
@@ -51,6 +63,12 @@
           <button>Generate with AI</button>
         </form>
       </div>
+      <div class="card">
+        <div class="row">
+          <h3>Question Management</h3>
+          <button id="clear-all-questions" class="delete-btn">Clear All Questions</button>
+        </div>
+      </div>
       <ul id="q-list" class="stack"></ul>
     </main>
 
@@ -71,6 +89,12 @@
 
     <main id="view-attempts" class="view container hidden">
       <h2>Attempts</h2>
+      <div class="card">
+        <div class="row">
+          <h3>Attempt Management</h3>
+          <button id="clear-all-attempts" class="delete-btn">Clear All Attempts</button>
+        </div>
+      </div>
       <div id="attempts" class="stack"></div>
     </main>
 
