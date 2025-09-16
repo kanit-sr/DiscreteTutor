@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Discrete Math Quiz</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <!-- MathJax for LaTeX rendering -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+      };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+
+  <body>
+    <!-- Chatbot widget -->
+    <div id="chatbot">
+      <div id="chatbot-header">
+        <span>💬 Tutor Bot</span>
+        <button id="chatbot-toggle">_</button>
+      </div>
+      <div id="chatbot-messages"></div>
+      <form id="chatbot-form">
+        <input type="text" id="chatbot-input" placeholder="Ask me anything..." required />
+        <button>Send</button>
+      </form>
+    </div>
+    <header class="container">
+      <h1>Discrete Math Quiz</h1>
+      <nav>
+        <button data-view="home">Home</button>
+        <button data-view="questions">Questions</button>
+        <button data-view="take">Take Quiz</button>
+        <button data-view="attempts">Attempts</button>
+        <button id="theme-toggle">🌙</button>
+      </nav>
+    </header>
+
+    <main id="view-home" class="view container">
+      <div class="card">
+        <h2>Welcome</h2>
+        <p>Practice Discrete Math with topic-based random quizzes. Use AI to explain and to generate new questions.</p>
+      </div>
+    </main>
+
+    <main id="view-questions" class="view container hidden">
+      <h2>Manage Questions</h2>
+      <div class="card">
+        <h3>Create Question</h3>
+        <form id="q-create-form" class="stack">
+          <div class="row">
+            <input name="topic" placeholder="topic (logic/sets/relations/graphs/proof)" required />
+            <input name="correct" type="number" min="1" max="4" placeholder="correct (1-4)" required />
+          </div>
+          <input name="prompt" placeholder="Prompt (supports LaTeX like \\(a^2+b^2=c^2\\))" required />
+          <div class="row">
+            <input name="c1" placeholder="Choice 1" required />
+            <input name="c2" placeholder="Choice 2" required />
+          </div>
+          <div class="row">
+            <input name="c3" placeholder="Choice 3" required />
+            <input name="c4" placeholder="Choice 4" required />
+          </div>
+          <button type="submit">Create</button>
+        </form>
+      </div>
+      <div class="card">
+        <h3>AI Generate Question</h3>
+        <form id="q-ai-form" class="row">
+          <input name="topic" placeholder="topic (logic/sets/relations/graphs/proof)" required />
+          <button>Generate with AI</button>
+        </form>
+      </div>
+      <div class="card">
+        <div class="row">
+          <h3>Question Management</h3>
+          <button id="clear-all-questions" class="delete-btn">Clear All Questions</button>
+        </div>
+      </div>
+      <ul id="q-list" class="stack"></ul>
+    </main>
+
+    <main id="view-take" class="view container hidden">
+      <h2>Take Quiz</h2>
+      <form id="topics-form" class="card">
+        <div><b>Choose topics:</b></div>
+        <div id="topics-box" class="row"></div>
+        <div class="row">
+          <label>Number of questions: <input id="topics-count" type="number" min="1" max="100" value="30" /></label>
+          <button id="start-quiz" type="submit">Start</button>
+        </div>
+      </form>
+      <div id="quiz"></div>
+      <button id="submit-quiz" class="hidden">Submit</button>
+      <div id="result"></div>
+    </main>
+
+    <main id="view-attempts" class="view container hidden">
+      <h2>Attempts</h2>
+      <div class="card">
+        <div class="row">
+          <h3>Attempt Management</h3>
+          <button id="clear-all-attempts" class="delete-btn">Clear All Attempts</button>
+        </div>
+      </div>
+      <div id="attempts" class="stack"></div>
+    </main>
+
+    <script src="/app.js" defer></script>
+  
+<div id="attempt-modal" class="modal-backdrop">
+  <div class="modal">
+    <header>
+      <h3>Attempt Detail</h3>
+      <button id="attempt-close">Close</button>
+    </header>
+    <div id="attempt-content"></div>
+  </div>
+</div>
+
+<div id="q-edit-modal" class="modal-backdrop">
+  <div class="modal">
+    <header>
+      <h3>Edit Question</h3>
+      <button id="q-edit-close">Close</button>
+    </header>
+    <form id="q-edit-form" class="stack">
+      <input type="hidden" name="id" />
+      <input type="hidden" name="id_num" />
+      <input type="hidden" name="id_obj" />
+      <div class="row">
+        <input name="topic" placeholder="topic" required />
+        <input name="correct" type="number" min="1" max="4" placeholder="correct (1-4)" required />
+      </div>
+      <input name="prompt" placeholder="Prompt" required />
+      <div class="row">
+        <input name="c1" placeholder="Choice 1" required />
+        <input name="c2" placeholder="Choice 2" required />
+      </div>
+      <div class="row">
+        <input name="c3" placeholder="Choice 3" required />
+        <input name="c4" placeholder="Choice 4" required />
+      </div>
+      <button type="submit">Save Changes</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
